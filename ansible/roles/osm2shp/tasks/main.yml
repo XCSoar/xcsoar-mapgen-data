@@ -1,11 +1,17 @@
 --- 
  - name: Clone osm2shp git repo
-   git: repo=http://git.xcsoar.org/cgit/master/osm2shp.git dest=/opt/osm2shp
-   register: compile
+   git: repo={{ osm2shp_git }} dest={{ osm2shp_dir }}
+   notify: recompile-osm2shp
+   ignore_errors: true
+
+ - name: apply patches to osm2shp 
+   patch: src=files/osm2shp-shpfile.patch dest={{ osm2shp_dir }}/osm2shp.cc
 
  - name: install compile dependencies
    apt: name={{ item }}
    with_items: 
      - gcc
      - libshp-dev
-   register: compile
+     - libsqlite3-dev
+     - libboost-iostreams-dev
+   notify: recompile-osm2shp
