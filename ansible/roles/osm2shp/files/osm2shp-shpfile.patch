@@ -1,0 +1,9 @@
+--- osm2shp.cc.orig	2016-11-17 22:03:09.068940969 +0100
++++ osm2shp.cc	2016-11-17 22:03:22.609007073 +0100
+@@ -1,5 +1,5 @@
+ #include <sqlite3.h>
+-#include <libshp/shapefil.h>
++#include <shapefil.h>
+ #include <stdint.h>
+ #include <expat.h>
+ #include <map>
