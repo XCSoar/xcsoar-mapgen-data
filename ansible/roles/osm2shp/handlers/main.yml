@@ -1,4 +1,4 @@
 ---
   - name: recompile-osm2shp
-    make: chdir=/opt/osm2shp
+    make: chdir={{ osm2shp_dir }}
 
