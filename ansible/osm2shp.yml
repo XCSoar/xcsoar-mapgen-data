@@ -1,0 +1,4 @@
+--- 
+ - hosts: mapgen-data
+   roles:
+     - osm2shp 
