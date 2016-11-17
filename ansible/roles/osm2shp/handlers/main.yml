@@ -5,3 +5,8 @@
   
   - name: install-osm2shp
     copy: src={{ osm2shp_dir }}/{{ item }} /usr/local/bin/{{ item }} mode=0755 
+    with_items:
+    - osmchange
+    - osm2shp
+    - osmfilter
+    - mapgen.sh
