@@ -1,4 +1,7 @@
 ---
   - name: recompile-osm2shp
     make: chdir={{ osm2shp_dir }}
-
+    notify: install-osm2shp
+  
+  - name: install-osm2shp
+    copy: src={{ osm2shp_dir }}/{{ item }} /usr/local/bin/{{ item }} mode=0755 
