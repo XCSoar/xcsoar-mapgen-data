@@ -1,0 +1,11 @@
+--- mapgen.sh.orig	2016-11-17 22:23:33.898874156 +0100
++++ mapgen.sh	2016-11-17 22:23:45.926931936 +0100
+@@ -36,7 +36,7 @@
+     echo "Converting $OSM_PATH to shapefiles in directory $CONVERTED_PATH"
+     echo "================================================================================"
+     trap remove_converted INT
+-    ./osm2shp $OSM_PATH $CONVERTED_PATH
++    osm2shp $OSM_PATH $CONVERTED_PATH
+ fi
+ 
+ echo "================================================================================"
