@@ -26,6 +26,3 @@
    apt: name={{ item }}
    with_items: 
    - grass
-
-
- 
