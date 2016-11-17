@@ -14,4 +14,5 @@
      - libshp-dev
      - libsqlite3-dev
      - libboost-iostreams-dev
+     - libexpat1-dev
    notify: recompile-osm2shp
