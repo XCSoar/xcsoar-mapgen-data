@@ -1,3 +1,11 @@
 --- 
  - name: Clone osm2shp git repo
    git: repo=http://git.xcsoar.org/cgit/master/osm2shp.git dest=/opt/osm2shp
+   register: compile
+
+ - name: install compile dependencies
+   apt: name={{ item }}
+   with_items: 
+     - gcc
+     - libshp-dev
+   register: compile
