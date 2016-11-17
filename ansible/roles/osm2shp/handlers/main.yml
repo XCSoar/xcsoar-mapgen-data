@@ -1,0 +1,4 @@
+---
+  - name: recompile-osm2shp
+    make: chdir=/opt/osm2shp
+
