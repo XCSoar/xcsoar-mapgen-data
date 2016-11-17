@@ -12,8 +12,6 @@
    patch: src=files/osm2shp-mapgen.sh.patch dest={{ osm2shp_dir }}/mapgen.sh
    notify: recompile-osm2shp
 
- 
-
  - name: install compile dependencies
    apt: name={{ item }}
    with_items: 
@@ -24,3 +22,10 @@
      - libexpat1-dev
    notify: recompile-osm2shp
 
+ - name: install runtime dependencies
+   apt: name={{ item }}
+   with_items: 
+   - grass
+
+
+ 
