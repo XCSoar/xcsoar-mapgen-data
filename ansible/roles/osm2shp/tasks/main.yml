@@ -1,0 +1,3 @@
+--- 
+ - name: Clone osm2shp git repo
+   git: src=http://git.xcsoar.org/cgit/master/osm2shp.git dest=/opt/osm2shp
