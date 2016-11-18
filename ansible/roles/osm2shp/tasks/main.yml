@@ -21,7 +21,7 @@
      - libexpat1-dev
      - zlib1g-dev
      - make
-     - libosmium2-dev
+     - libosmium-dev
    notify: recompile-osm2shp
 
  - name: install runtime dependencies
