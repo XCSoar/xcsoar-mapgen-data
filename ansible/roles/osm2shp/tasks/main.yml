@@ -6,7 +6,13 @@
    apt: name=git
 
  - name: Clone osm2shp git repo
-   git: repo={{ osm2shp_git }} dest={{ osm2shp_dir }}
+   git: repo={{ osm2shp_git }} dest={{ osm2shp_dir }} force=true
+   notify: recompile-osm2shp
+   notify: update-osmium-incs
+   ignore_errors: true
+
+ - name: Clone osmium git repo
+   git: repo={{ osmium_git }} dest={{ osmium_dir }} force=true 
    notify: recompile-osm2shp
    ignore_errors: true
 
@@ -21,11 +27,8 @@
      - libexpat1-dev
      - zlib1g-dev
      - make
+     - libosmpbf-dev
    notify: recompile-osm2shp
-
- - name: install compile dependencies from backports
-   apt: name={{ item }} suite=jessie-backports
-     - libosmium-dev
 
  - name: install runtime dependencies
    apt: name={{ item }}

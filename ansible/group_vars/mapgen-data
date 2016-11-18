@@ -1,3 +1,5 @@
 osm2shp_dir: "/opt/osm2shp"
 osm2shp_git: "https://github.com/minad/osm2shp.git"
-debian_jessie_backports: "deb http://httpredir.debian.org/debian jessie-backports main"
+osmium_dir: "/opt/osmium"
+osmium_git: "https://github.com/joto/osmium.git"
+debian_jessie_backports: "deb http://httpredir.debian.org/debian jessie-backports main contrib non-free"
