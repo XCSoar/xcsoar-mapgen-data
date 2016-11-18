@@ -1,4 +1,7 @@
 --- 
+ - name: Ensure that git is installed
+   apt: name=git
+
  - name: Clone osm2shp git repo
    git: repo={{ osm2shp_git }} dest={{ osm2shp_dir }}
    notify: recompile-osm2shp
