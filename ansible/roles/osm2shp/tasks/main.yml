@@ -21,8 +21,11 @@
      - libexpat1-dev
      - zlib1g-dev
      - make
-     - libosmium-dev
    notify: recompile-osm2shp
+
+ - name: install compile dependencies from backports
+   apt: name={{ item }} suite=jessie-backports
+     - libosmium-dev
 
  - name: install runtime dependencies
    apt: name={{ item }}
