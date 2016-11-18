@@ -1,4 +1,7 @@
 --- 
+ - name: add backports repo to jessie
+   apt_repository: repo={{ debian_jessie_backports }} 
+
  - name: Ensure that git is installed
    apt: name=git
 
@@ -11,6 +14,7 @@
    apt: name={{ item }}
    with_items: 
      - gcc
+     - g++
      - libshp-dev
      - libsqlite3-dev
      - libboost-iostreams-dev
