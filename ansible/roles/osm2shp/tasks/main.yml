@@ -16,6 +16,7 @@
      - libboost-iostreams-dev
      - libexpat1-dev
      - zlib1g-dev
+     - make
    notify: recompile-osm2shp
 
  - name: install runtime dependencies
