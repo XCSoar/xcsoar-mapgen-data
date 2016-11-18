@@ -4,14 +4,6 @@
    notify: recompile-osm2shp
    ignore_errors: true
 
- - name: apply patches to osm2shp.cc 
-   patch: src=files/osm2shp-shpfile.patch dest={{ osm2shp_dir }}/osm2shp.cc
-   notify: recompile-osm2shp
-
- - name: apply patches to mapgen.sh
-   patch: src=files/osm2shp-mapgen.sh.patch dest={{ osm2shp_dir }}/mapgen.sh
-   notify: recompile-osm2shp
-
  - name: install compile dependencies
    apt: name={{ item }}
    with_items: 
@@ -20,6 +12,7 @@
      - libsqlite3-dev
      - libboost-iostreams-dev
      - libexpat1-dev
+     - zlib1g-dev
    notify: recompile-osm2shp
 
  - name: install runtime dependencies
