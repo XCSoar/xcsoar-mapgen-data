@@ -1,4 +1,5 @@
 --- 
  - hosts: mapgen-data
    roles:
+     - backports
      - osm2shp 
