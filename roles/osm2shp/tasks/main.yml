@@ -1,23 +1,32 @@
 --- 
  - name: add backports repo to jessie
-   apt_repository: repo={{ debian_jessie_backports }} 
+   apt_repository: 
+     repo: "{{ debian_jessie_backports }}"
 
  - name: Ensure that git is installed
-   apt: name=git
+   package: 
+     name: git
 
  - name: Clone osm2shp git repo
-   git: repo={{ osm2shp_git }} dest={{ osm2shp_dir }} force=true
+   git: 
+     repo: "{{ osm2shp_git }}" 
+     dest: "{{ osm2shp_dir }}" 
+     force: true
    notify: recompile-osm2shp
    notify: update-osmium-incs
    ignore_errors: true
 
  - name: Clone osmium git repo
-   git: repo={{ osmium_git }} dest={{ osmium_dir }} force=true 
+   git: 
+     repo: "{{ osmium_git }}" 
+     dest: "{{ osmium_dir }}" 
+     force: true 
    notify: recompile-osm2shp
    ignore_errors: true
 
  - name: install compile dependencies
-   apt: name={{ item }}
+   package: 
+     name: "{{ item }}"
    with_items: 
      - gcc
      - g++
@@ -31,6 +40,7 @@
    notify: recompile-osm2shp
 
  - name: install runtime dependencies
-   apt: name={{ item }}
+   package: 
+     name: "{{ item }}"
    with_items: 
-   - grass
+     - grass

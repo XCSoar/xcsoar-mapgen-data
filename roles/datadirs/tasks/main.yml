@@ -1,6 +1,8 @@
 --- 
  - name: Create staging dirs
-   file: type=directory path={{ item }}
+   file: 
+     state: directory 
+     path: "{{ item }}"
    with_items:
    - mapgen-data-dir-live
    - mapgen-data-dir-staging
