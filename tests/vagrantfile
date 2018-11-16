@@ -1,0 +1,18 @@
+@ansible_home = "/etc/ansible/"
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/stretch64"
+  config.vm.define "ansible-xcsoar-mapgen-data"
+  # Prevent TTY Errors (copied from laravel/homestead: "homestead.rb" file)... By default this is "bash -l".
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+ if Vagrant.has_plugin?("vagrant-cachier")
+     config.cache.scope = :box
+     config.cache.synced_folder_opts = {type: :sshfs}
+  end
+  config.vm.synced_folder "../", "/vagrant", type: "sshfs"
+
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.config_file = "/vagrant/tests/ansible-vagrant.cfg"
+    ansible.playbook = "/vagrant/site.yml"
+ end
+end
