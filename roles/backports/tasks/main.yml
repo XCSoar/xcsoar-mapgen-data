@@ -1,20 +1,5 @@
----
-- name: include os specific vars
-  include_vars: '{{ item }}'
-  with_first_found:
-    - files:
-      - '{{ ansible_distribution }}_{{ ansible_distribution_major_version }}.yml'
-      - '{{ ansible_os_family }}.yml'
-      skip: true
-  tags:
-    - 'role::$ROLENAME'
-    - 'role::$ROLENAME:install'
-    - 'role::$ROLENAME:config'
-
-- nane: include os specific prerequisite tasks
-  include: '{{ item }}'
-  with_first_found:
-    - files: 
-      - '{{ ansible_distribution }}_{{ ansible_distribution_major_version }}.yml'
-      - '{{ ansible_os_family }}.yml'
-      skip: true
+--- 
+ - name: enable backports repository
+   apt_repository: 
+     repo: "deb {{ backports_repo_url }} {{ ansible_distribution_release }}-backports  main contrib non-free"
+     state: present

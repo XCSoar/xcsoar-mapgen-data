@@ -1,20 +1,21 @@
 ---
-  - name: update-osmium-incs
-    copy: remote_src=yes src={{ osmium_dir }}/include/  dest=/usr/local/include/
-    notify: recompile-osm2shp
-
   - name: recompile-osm2shp
-    make: chdir={{ osm2shp_dir }}
+    make: 
+      chdir: "{{ osm2shp_dir }}"
     notify: install-osm2shp
 
   - name: install-osm2shp
-    copy: remote_src=yes src={{ osm2shp_dir }}/{{ item }} dest=/usr/local/bin/{{ item }} mode=0755 
+    copy: 
+      remote_src: yes 
+      src: "{{ osm2shp_dir }}/{{ item }}" 
+      dest: "/usr/local/bin/{{ item }}" 
+      mode: 0755
     with_items:
     - osm2shp
     - mapgen.sh
     notify: apply patches to mapgen.sh  
 
   - name: apply patches to mapgen.sh
-    patch: src=files/osm2shp-mapgen.sh.patch dest={{ osm2shp_dir }}/mapgen.sh
-
-
+    patch: 
+      src: "files/osm2shp-mapgen.sh.patch" 
+      dest: "{{ osm2shp_dir }}/mapgen.sh"

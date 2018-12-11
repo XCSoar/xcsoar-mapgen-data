@@ -9,16 +9,15 @@
      dest: "{{ osm2shp_dir }}" 
      force: true
    notify: recompile-osm2shp
-   notify: update-osmium-incs
    ignore_errors: true
 
- - name: Clone osmium git repo
-   git: 
-     repo: "{{ osmium_git }}" 
-     dest: "{{ osmium_dir }}" 
-     force: true 
-   notify: recompile-osm2shp
-   ignore_errors: true
+ - name: install osmium and osm tools
+   package:
+     name: "{{ item }}"
+   with_items:
+     - osmium-tool
+     - osmctools   
+      
 
  - name: install compile dependencies
    package: 
